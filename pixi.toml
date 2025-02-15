@@ -1,0 +1,29 @@
+[project]
+name = "kitctfood"
+version = "0.1.0"
+description = "Fair and democratic food voting system. (FADFVS)"
+authors = ["Chrisliebär <mail@chrisliebaer.de>"]
+channels = [
+	"conda-forge",
+]
+platforms = ["win-64", "linux-64"]
+
+[environments]
+default = { features = [], solve-group = "prod" }
+prod = { features = [], solve-group = "prod" }
+
+[dependencies]
+python = "3.13.*"
+colorlog = "6.8.*"
+mattermostdriver = "7.3.*"
+pytz = "2025.1.*"
+
+# maintainer stopped updating this package in fears of CRA
+# watch development and potential forks
+croniter = "6.0.*"
+toml = "0.10.*"
+dacite = "1.9.*"
+randomgen = "2.1.*"
+
+[pypi-dependencies]
+mattermostautodriver = { git = "https://github.com/embl-bio-it/python-mattermost-autodriver.git", rev = "a3600fc908e55db652762f3bef3245681e932d06" } # 2.3.0

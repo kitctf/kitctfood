@@ -1,0 +1,4 @@
+.pixi
+.git
+__pycache__
+/config.toml

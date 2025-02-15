@@ -1,0 +1,14 @@
+name: Docker Build
+
+on:
+  push:
+
+permissions:
+  packages: write
+
+jobs:
+  docker-salsa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: chrisliebaer/.github/actions/docker-salsa@master

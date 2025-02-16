@@ -721,7 +721,7 @@ class BotInstance:
 			await asyncio.sleep(wait_time.total_seconds())
 
 			# create the poll
-			close_time = next_poll[0] + datetime.timedelta(minutes=next_poll[1].duration)
+			close_time = next_poll[0] + datetime.timedelta(seconds=next_poll[1].duration)
 			poll = await self.create_poll(close_time)
 
 			# run poll in background so we can queue multiple polls

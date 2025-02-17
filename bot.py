@@ -551,13 +551,13 @@ class ActivePoll:
 			
 			# build list of all winning locations
 			winning_locations = []
-			for winner in winners:
-				winning_locations.append(self.checkpoint.options.locations[winner])
+			for winner_item in winners:
+				winning_locations.append(self.checkpoint.options.locations[winner_item])
 			
 			end_message = self.bot.config.locale.vote_end_tie.format(
 				locations=", ".join(winning_locations),
 				location=self.checkpoint.options.locations[winner],
-				entropy_sources=", ".join(self.checkpoint.options.entropy_sources)
+				entropy_sources=", ".join(sources)
 			)
 
 		final_message = f"""

@@ -542,7 +542,6 @@ class ActivePoll:
 		# default to single winner
 		winner = winners[0]
 		end_message = self.bot.config.locale.vote_end.format(location=self.checkpoint.options.locations[winner])
-		short_end_message = self.bot.config.locale.vote_end_short.format(location=self.checkpoint.options.locations[winner])
 
 		# and replace if there are multiple winners
 		if len(winners) > 1:
@@ -566,6 +565,9 @@ class ActivePoll:
 
 {end_message.strip()}
 		""".strip()
+
+		# construct short message after checking for tie, since winner can change inside the tie block
+		short_end_message = self.bot.config.locale.vote_end_short.format(location=self.checkpoint.options.locations[winner])
 
 		# post the final message
 		await self.bot.driver.posts.update_post(self.checkpoint.post_id, {

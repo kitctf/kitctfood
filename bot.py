@@ -576,6 +576,11 @@ class ActivePoll:
 			'has_reactions': True
 		})
 
+		# remote additional reactions, since they inflate actual participant count
+		for reaction in self.bot.config.poll.additional_reactions:
+			logging.debug(f"Removing reaction {reaction} from post {self.checkpoint.post_id}")
+			await self.bot.driver.reactions.delete_reaction(self.bot.driver.client.userid, self.checkpoint.post_id, reaction)
+
 		# post just the end message to the thread
 		await self.send_message({
 			'message': short_end_message

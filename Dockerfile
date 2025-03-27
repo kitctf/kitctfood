@@ -1,7 +1,7 @@
 # mostly taken from https://github.com/prefix-dev/pixi-docker
 FROM ghcr.io/prefix-dev/pixi:0.40.0 AS build
 RUN apt update && apt install -y git && rm -rf /var/lib/apt/lists/*
-COPY . /app
+COPY pixi.toml pixi.lock /app/
 WORKDIR /app
 
 RUN pixi install -e prod

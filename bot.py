@@ -551,7 +551,7 @@ class ActivePoll:
 		if len(winners) > 1:
 			(rng, sources) = seed_strong_random(self.bot.config)
 			winner = rng.random() * len(winners)
-			winner = int(winner)
+			winner = winners[int(winner)]
 			
 			# build list of all winning locations
 			winning_locations = []

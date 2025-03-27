@@ -518,6 +518,12 @@ class ActivePoll:
 			if index < len(self.checkpoint.options.locations):
 				votes[index] = votes.get(index, 0) + 1
 
+		# include stats in original message
+		# for this we append the vote count to the location as "location (+votes)"
+		locations_with_votes = []
+		for pos, count in votes:
+			locations_with_votes.append(f"{self.checkpoint.options.locations[pos]} (+{count})")
+
 		# sort votes by count
 		votes = sorted(votes.items(), key=lambda x: x[1], reverse=True)
 		logging.debug(f"Sorted votes: {votes}")
@@ -527,12 +533,6 @@ class ActivePoll:
 		winners = [i for i, v in votes if v == highest_vote]
 		assert len(winners) > 0, "No winners found"
 		logging.info(f"Winners: {winners}")
-
-		# include stats in original message
-		# for this we append the vote count to the location as "location (+votes)" ordered by votes
-		locations_with_votes = []
-		for pos, count in votes:
-			locations_with_votes.append(f"{self.checkpoint.options.locations[pos]} (+{count})")
 
 		start_message = ActivePoll.format_message(
 			PollOptions(

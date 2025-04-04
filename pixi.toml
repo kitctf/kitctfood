@@ -8,6 +8,19 @@ channels = [
 ]
 platforms = ["win-64", "linux-64"]
 
+[tasks]
+oneshot = { cmd = [
+	"python",
+	"bot.py",
+	"--log",
+	"DEBUG",
+	"--config",
+	"config.toml",
+	"once",
+	"--duration",
+	"60",
+]}
+
 [environments]
 default = { features = [], solve-group = "prod" }
 prod = { features = [], solve-group = "prod" }

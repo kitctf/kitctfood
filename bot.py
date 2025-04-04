@@ -521,7 +521,7 @@ class ActivePoll:
 		# include stats in original message
 		# for this we append the vote count to the location as "location (+votes)"
 		locations_with_votes = []
-		for pos, count in votes:
+		for pos, count in votes.items():
 			locations_with_votes.append(f"{self.checkpoint.options.locations[pos]} (+{count})")
 
 		# sort votes by count

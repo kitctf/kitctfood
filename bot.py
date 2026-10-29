@@ -460,7 +460,7 @@ class ActivePoll:
 						user = await self.bot.driver.users.get_user(post["user_id"])
 
 						# use nickname if available, otherwise "first_name", if both are missing, use "sender_name"
-						author = user.get("nickname", user.get("first_name", event["data"]["sender_name"]))
+						author = user.get("nickname") or user.get("first_name") or event["data"]["sender_name"]
 						content = post["message"]
 						logging.debug(f"Received reply to poll message ({self.checkpoint.post_id}) from {author}: {content}")
 						await self.handle_poll_message(author, content)
